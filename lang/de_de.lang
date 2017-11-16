@@ -1,0 +1,10 @@
+lazyload_title = LazyLoad
+lazyload_setting = LazyLoad Einstellungen
+lazyload_injectjs = Automatisch CSS und JavaScript einbinden
+lazyload_offset = Offset
+lazyload_offset_info = Element offset (int) - Standard 100
+lazyload_selector = CSS Selektor
+lazyload_selector_info = CSS Klasse auf dem img-Tag (mit Punkt) - Standard .b-lazy
+lazyload_delay = Verzögerung
+lazyload_delay_info = Verzögerung zwischen den Funktionsaufrufen (int) - Standard 25
+lazyload_save = Speichern
