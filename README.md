@@ -21,6 +21,9 @@ Weiter können bisher schon ein paar Einstellungen vorgenommen werden.
 
 Informationen dazu findet Ihr auch hier: [bLazy](http://dinbror.dk/blog/blazy/)
 
+
+![Screenshot](https://raw.githubusercontent.com/eaCe/lazyload/assets/screen.jpg)
+
 ___
 ### Credits
 
