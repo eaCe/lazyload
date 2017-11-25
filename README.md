@@ -17,6 +17,25 @@ oder:
 <img src="meineseite.de/images/lazyimage/bild.jpg" data-src="meineseite.de/media/bild.jpg" alt="mein Bild" class="b-lazy">
 ```
 
+### Base64 
+
+Um den initialen Ladevorgang zu beschleunigen stehen nun zwei Funktionen im Frontend zur Verfügung. Diese geben einen base64 String zurück und können direkt im src Attribut ausgegeben werden.
+
+Die kleinste und schnellste Lösung gibt einen leeren base64-Bild-String zurück:
+```php
+lazyload::getEmptyBase64();
+```
+Die zweite Variante gibt das zuvor verkleinerte und verschwommene Bild als base64-String zurück.
+```php
+lazyload::getBase64('images/lazyimage/bild.jpg');
+```
+oder:
+```php
+lazyload::getBase64('index.php?rex_media_type=lazyimage&rex_media_file=bild.jpg');
+```
+
+### Sonstiges
+
 Weiter können bisher schon ein paar Einstellungen vorgenommen werden.
 
 Informationen dazu findet Ihr auch hier: [bLazy](http://dinbror.dk/blog/blazy/)

@@ -8,4 +8,8 @@ if (!rex::isBackend())
         include_once('lib/lazyload.php');
     }
 }
+else
+{
+    include_once('lib/lazyload_functions.php');
+}
 ?>
