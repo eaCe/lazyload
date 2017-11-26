@@ -1,19 +1,17 @@
-document.addEventListener('DOMContentLoaded', function ()
+window.onload = function ()
 {
     var bLazy = new Blazy(
     {
-        selector: '". $selector ."', 
-        offset: ". intval($offset) .", 
-        delay: " . intval($delay) . ", 
-        error: function(e)
+        selector: layzySelector,
+        offset: layzyOffset,
+        delay: layzyDelay,
+        success: function (el)
+        {
+            window.dispatchEvent(new CustomEvent('lazyLoaded', {detail: el}));
+        },
+        error: function (e)
         {
             console.log('Blazy - error loading image: ', e);
         }
     });
-                
-    setTimeout(function ()
-    {
-        bLazy.revalidate();
-    }, 100); 
-
-});
+};

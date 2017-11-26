@@ -4,9 +4,9 @@ rex_extension::register('OUTPUT_FILTER', function(rex_extension_point $ep)
 {
     $addon = rex_addon::get('lazyload');
 
-    $selector = (!is_null($addon->getConfig('lazyload_selector')) && $addon->getConfig('lazyload_selector') !== "") ? $addon->getConfig('lazyload_selector') : ".b-lazy";
-    $offset = (!is_null($addon->getConfig('lazyload_offset')) && $addon->getConfig('lazyload_offset') !== "") ? intval($addon->getConfig('lazyload_offset')) : 100;
-    $delay = (!is_null($addon->getConfig('lazyload_delay')) && $addon->getConfig('lazyload_delay') !== "") ? intval($addon->getConfig('lazyload_delay')) : 50;
+    $selector = (!is_null($addon->getConfig('lazyload_selector')) && $this->getConfig('lazyload_selector') !== "") ? $addon->getConfig('lazyload_selector') : ".b-lazy";
+    $offset = (!is_null($this->getConfig('lazyload_offset')) && $this->getConfig('lazyload_offset') !== "") ? intval($this->getConfig('lazyload_offset')) : 100;
+    $delay = (!is_null($addon->getConfig('lazyload_delay')) && $this->getConfig('lazyload_delay') !== "") ? intval($addon->getConfig('lazyload_delay')) : 50;
     
     $subject = $ep->getSubject();
     $domd = new DOMDocument();
@@ -24,17 +24,22 @@ rex_extension::register('OUTPUT_FILTER', function(rex_extension_point $ep)
 
     //append js
     $body = $domd->getElementsByTagName("body")->item(0);
-    $scriptElement = $domd->createElement("script");
-    $scriptElement->setAttribute("type", "text/javascript");
-    $scriptElement->setAttribute("src", rex_url::addonAssets("lazyload", 'blazy.min.js'));
+    $blazyScript = $domd->createElement("script");
+    $blazyScript->setAttribute("type", "text/javascript");
+    $blazyScript->setAttribute("src", rex_url::addonAssets("lazyload", 'blazy.min.js'));
 
-    $scriptContainer = $domd->createElement("script");
-    $scriptContainer->setAttribute("type", "text/javascript");
-       
-    $bLazyScript = $domd->createTextNode("window.onload = function() {var bLazy = new Blazy({selector: '.b-lazy', offset: 100, delay: 50, success: function (el){window.dispatchEvent(new CustomEvent('lazyLoaded', {detail:el})); }, error: function (e){console.log('Blazy - error loading image: ', e); }});};");
-    $scriptContainer->appendChild($bLazyScript);
-    $body->appendChild($scriptElement);
-    $body->appendChild($scriptContainer);
+    $lazyloadScript = $domd->createElement("script");
+    $lazyloadScript->setAttribute("type", "text/javascript");
+    $lazyloadScript->setAttribute("src", rex_url::addonAssets("lazyload", 'lazyload.min.js'));
+
+    $lazyVarsContainer = $domd->createElement("script");
+    $lazyVarsContainer->setAttribute("type", "text/javascript");
+    $lazyVars = $domd->createTextNode("var layzySelector='". $selector ."',layzyOffset=". $offset .",layzyDelay=". $delay .";");
+    $lazyVarsContainer->appendChild($lazyVars);
+    
+    $head->appendChild($lazyVarsContainer);
+    $body->appendChild($blazyScript);
+    $body->appendChild($lazyloadScript);
 
     //output modified dom
     $ep->setSubject($domd->saveHTML());
