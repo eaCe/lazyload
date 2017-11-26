@@ -31,7 +31,7 @@ rex_extension::register('OUTPUT_FILTER', function(rex_extension_point $ep)
     $scriptContainer = $domd->createElement("script");
     $scriptContainer->setAttribute("type", "text/javascript");
        
-    $bLazyScript = $domd->createTextNode("document.addEventListener('DOMContentLoaded', function (){var bLazy = new Blazy({selector: '" . $selector . "', offset: " . intval($offset) . ", delay: " . intval($delay) . ", error: function(e){console.log('Blazy - error loading image: ', e);}});setTimeout(function (){bLazy.revalidate();}, 250);});");
+    $bLazyScript = $domd->createTextNode("window.onload = function() {var bLazy = new Blazy({selector: '.b-lazy', offset: 100, delay: 50, success: function (el){window.dispatchEvent(new CustomEvent('lazyLoaded', {detail:el})); }, error: function (e){console.log('Blazy - error loading image: ', e); }});};");
     $scriptContainer->appendChild($bLazyScript);
     $body->appendChild($scriptElement);
     $body->appendChild($scriptContainer);

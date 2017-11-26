@@ -8,7 +8,7 @@ Wird auf der Settings-Seite des Addons die Option „Automatisch CSS und JavaScr
 Der img-Tag sollte dann, je nach dem, etwa so aussehen:
 
 ```html
-<img src=“index.php?rex_media_type=lazyimage&rex_media_file=bild.jpg“ alt=“mein Bild“ data-src=“tatsächlicher-bild-pfad.jpg“ class=“b-lazy“>
+<img src="index.php?rex_media_type=lazyimage&rex_media_file=bild.jpg" alt="mein Bild" data-src="tatsächlicher-bild-pfad.jpg" class="b-lazy">
 ```
 
 oder: 
