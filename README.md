@@ -34,6 +34,24 @@ oder:
 lazyload::getBase64('index.php?rex_media_type=lazyimage&rex_media_file=bild.jpg');
 ```
 
+### Events 
+
+Nach dem erfolgreichen Laden eines Bildes wird das „lazyLoaded“ Event getriggert. Dieser gibt auch das Bildelement zurück auf das wie folgt zugegriffen werden kann.
+
+```javascript
+window.addEventListener("lazyLoaded", function (event)
+{
+    console.log(event.detail);
+});
+```
+oder:
+```javascript
+jQuery(window).on("lazyLoaded", function (event)
+{
+    console.log(event.originalEvent.detail);
+});
+```
+
 ### Sonstiges
 
 Weiter können bisher schon ein paar Einstellungen vorgenommen werden.
