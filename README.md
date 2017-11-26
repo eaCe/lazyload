@@ -61,9 +61,11 @@ Informationen dazu findet Ihr auch hier: [bLazy](http://dinbror.dk/blog/blazy/)
 ### Beispiele
 
 **lazyimage:**
+
 ![Screenshot](https://raw.githubusercontent.com/eaCe/lazyload/assets/lazyimg.gif)
 
 **loader:**
+
 ![Screenshot](https://raw.githubusercontent.com/eaCe/lazyload/assets/loader.gif)
 ___
 ### Credits
