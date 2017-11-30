@@ -1,6 +1,6 @@
 window.onload = function ()
 {
-    var bLazy = new Blazy(
+    window.bLazy = new Blazy(
     {
         selector: layzySelector,
         offset: layzyOffset,
