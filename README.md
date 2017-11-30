@@ -34,6 +34,15 @@ oder:
 lazyload::getBase64('index.php?rex_media_type=lazyimage&rex_media_file=bild.jpg');
 ```
 
+### Funktionen 
+
+```javascript
+window.bLazy.revalidate()
+window.bLazy.load(element(s), force)
+window.bLazy.destroy()
+```
+Weitere Informationen dazu findet Ihr hier: [bLazy - Public functions](http://dinbror.dk/blog/blazy/#Functions)
+
 ### Events 
 
 Nach dem erfolgreichen Laden eines Bildes wird das „lazyLoaded“ Event getriggert. Dieser gibt auch das Bildelement zurück auf das wie folgt zugegriffen werden kann.
