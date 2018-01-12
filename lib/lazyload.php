@@ -43,5 +43,5 @@ rex_extension::register('OUTPUT_FILTER', function(rex_extension_point $ep)
 
     //output modified dom
     $ep->setSubject($domd->saveHTML());
-});
+}, rex_extension::LATE);
 ?>
